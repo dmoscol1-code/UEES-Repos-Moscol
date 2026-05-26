@@ -1,0 +1,81 @@
+body {
+    background-color: beige;
+}
+
+.navbar {
+    margin: 0px;
+}
+.navbar ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center; /* vertical align */
+    gap: 10px; /* horizontal spacing between items */
+}
+
+.navbar li {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    /* use flexbox for alignment instead of floats */
+}
+
+.navbar li:first-child {
+    margin-right: auto; /* push remaining links to the right */
+}
+
+.navbar li + li {
+    margin-left: 0; /* gap handled by `gap` on the container */
+}
+
+.navbar a{
+    text-decoration: none;
+    color: black;
+    padding: 15px;
+    display: block;
+    text-align: center;
+}
+
+.navbar a:hover {
+    color: red;
+    transition: color 0.3s ease;
+}
+#big-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin: 0px;
+    padding: 15px;
+}
+
+
+/* Add some padding to the content */
+/* Estilo para seccion Sobre mi. */
+
+#about {
+    background-color: rgb(247, 201, 201);
+    font-family: "Montserrat", sans-serif;
+    padding: 10px 5px;
+}
+
+#proyectos {
+    background-color:rgb(142, 172, 103);
+    font-family: "Montserrat", sans-serif;
+    padding: 50px;
+}
+
+#contacto {
+    background-color:rgb(67, 66, 129);
+    font-family: "Montserrat", sans-serif;
+    padding: 50px;
+    color: white;
+}
+#contacto a {
+    color: white;
+    text-decoration: none;
+}
+#contacto a:hover {
+    color:red;
+    transition: color 0.5s ease;
+}
