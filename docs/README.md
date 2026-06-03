@@ -3,8 +3,7 @@
 # Proyectos de Diego Moscol
 
 ## Proyecto 1
-Agrega informacion de proyecto
-- AGREGAR IMAGEN DE DEMOSTRACION
+Creacion de Registrador de Proyectos con PHP, Laravel y BootStrap 
 
 ## Proyecto 2
 Agrega informacion de proyecto
