@@ -10,11 +10,9 @@ class ProyectoController extends Controller
 {
     public function index()
     {
-        $proyectos = DB::table('proyectos')->get();
+        $proyectos = Proyecto::all();
 
-        return view('proyectos.index', [
-            'proyectos' => $proyectos
-        ]);
+        return view('proyectos.index', compact('proyectos'));
     }
 
     public function create()
@@ -43,7 +41,7 @@ class ProyectoController extends Controller
     public function show($id)
     {
         $proyecto=Proyecto::find($id);
-        return view("proyectos/show", compact('proyecto'));
+        return view("proyectos/show", ['proyecto' => $proyecto]);
     }
 
     public function store(Request $request)
@@ -51,5 +49,19 @@ class ProyectoController extends Controller
         Proyecto::create($request->all());
         return redirect('proyectos')
             ->with('success', 'Proyecto creado exitosamente');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     * @param int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function destroy($id)
+    {
+        $proyecto=Proyecto::find($id);
+        $proyecto->delete();
+        return redirect('proyectos')
+        ->with('success','proyecto eliminado con exito');
     }
 }
