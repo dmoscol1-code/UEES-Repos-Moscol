@@ -7,10 +7,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   </head>
   <body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Gestor de Proyectos</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="{{ url('proyectos') }}">Proyectos</a>
+            <a class="nav-link" href="{{ route('proyectos.create') }}">Crear Proyecto</a>
+            <a class="nav-link" href="{{ route('proyectos.edit', ['proyecto' => 1]) }}">Editar Proyecto</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <div class="container py-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="mb-0">Proyectos</h1>
-        <a href="{{ route('proyectos.create') }}" class="btn btn-primary">Nuevo Proyecto</a>
+        <a href="{{ route('proyectos.create') }}" class="btn btn-primary">Nuevo</a>
+        
       </div>
 
       @if(session('success'))
@@ -36,7 +54,23 @@
                 <td>{{ $proyecto->descripcion }}</td>
                 <td>{{ optional($proyecto->created_at)->format('Y-m-d H:i') ?? '-' }}</td>
                 <td>
-                  <a href="{{ route('proyectos.edit', $proyecto->id) }}" class="btn btn-sm btn-warning">Editar</a>
+                  <div class="d-flex gap-2">
+                    <a href="{{ route('proyectos.edit', $proyecto->id) }}"
+                      class="btn btn-sm btn-info">
+                      Editar
+                    </a>
+
+                    <form action="{{ route('proyectos.destroy', $proyecto->id) }}"
+                          method="POST"
+                          class="d-inline-block"
+                          onsubmit="return confirm('¿Deseas eliminar este proyecto?');">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-sm btn-danger">
+                        Eliminar
+                      </button>
+                    </form>
+                  </div>
                 </td>
               </tr>
             @empty
